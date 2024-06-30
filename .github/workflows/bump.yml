@@ -26,3 +26,4 @@ jobs:
         git tag ${{ github.event.client_payload.package_version }}
         git push origin ${{ github.event.client_payload.package_version }}
         git revert HEAD~1
+        git push origin
