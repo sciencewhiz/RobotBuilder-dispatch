@@ -19,6 +19,8 @@ jobs:
     - name: Tag and push
       shell: bash
       run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
         git am -3 < .github/workflows/0001-Disable-compile-tests-until-GradleRIO-released-.patch
         sed -i `s/wpilibRelease = \"/wpilibRelease = \"${{ github.event.client_payload.package_version }}\"/`src/main/java/robotbuilder/exporters/GenericExporter.java
         git commit -a -m "Bump export version to ${{ github.event.client_payload.package_version }}"
